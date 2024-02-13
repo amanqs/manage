@@ -48,7 +48,7 @@ keyboard = InlineKeyboardMarkup(
             InlineKeyboardButton(text="Buat String Session 📝", callback_data="generate"),
         ],
         [
-            InlineKeyboardButton(text="Perintah Lainnya ❓", callback_data="bot_commands"),
+            InlineKeyboardButton(text="Perintah Lainnya ❓", callback_data="helpernya"),
             InlineKeyboardButton(text="Perintah Bot Lainnya 🤖", callback_data="multi_funsgi"),
         ],
         [
