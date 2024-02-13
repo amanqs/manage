@@ -49,7 +49,7 @@ goblok_jamet = [
   
 admin_kynan = [
     [
-      InlineKeyboardButton(text="👮‍AMANG", user_id=2073506739),
+      InlineKeyboardButton(text="👮‍AMANG", user_id=1839010591),
     ],
     [
       InlineKeyboardButton(
