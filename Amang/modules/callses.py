@@ -5,7 +5,7 @@ from .gen import generate_session, ask_ques, buttons_ques
 from Amang import *
 
 
-@app.on_callback_query(filters.regex(pattern=r"^(generate|pyrogram|pyrogram1|jasa_repo|multi_funsgi|helpernya|telethon)$"))
+@app.on_callback_query(filters.regex(pattern=r"^(generate|pyrogram|jasa_repo|multi_funsgi|helpernya|telethon)$"))
 async def _callbacks(bot: Client, callback_query: CallbackQuery):
     query = callback_query.data.lower()
     user = await bot.get_me()
@@ -106,9 +106,6 @@ Berikut Adalah Daftar Perintah Untuk Manage & Music
             if query == "pyrogram":
                 await callback_query.answer()
                 await generate_session(bot, callback_query.message)
-            elif query == "pyrogram1":
-                await callback_query.answer()
-                await generate_session(bot, callback_query.message, old_pyro=True)
             elif query == "telethon":
                 await callback_query.answer()
                 await generate_session(bot, callback_query.message, telethon=True)
