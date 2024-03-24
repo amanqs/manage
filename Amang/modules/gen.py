@@ -17,7 +17,7 @@ from pyrogram.errors import (
     PasswordHashInvalid
 )
 
-from Amang.core.listen.listen import ListenerTimeout
+#from pyromod.excep
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 from telethon.errors import (
@@ -33,7 +33,9 @@ from Amang import *
 
 ask_ques = "**Halo {}\n\nIni Adalah Bot String Session \n\nBuat ID 5 atau ID 6\n\nSilakan Pilih Session Mana yang ingun anda buat.\n\nNoted : Jika Buat String Pake Bot Ini, Tolong AddBlacklist Gcast di @amwangsupport.\n\nPERSTAN DENGAN ANAK² BOT TELEGRAM...**"
 
-
+class ListenerTimeout(Exception):
+    pass
+    
 goblok_jamet = [
     [
       InlineKeyboardButton(
