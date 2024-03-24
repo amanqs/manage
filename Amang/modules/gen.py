@@ -181,7 +181,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         string_session = client.session.save()
     else:
         string_session = await client.export_session_string()
-    text = f"**{ty.upper()} NIH JING.** \n\n`{string_session}` \n\n**Minimal Bilang Makasih Ke** @amwang **Atau Ke** @amwangsupport **Karna Akun Lu Kaga Deak**"
+    text = f"**{ty.upper()} HERE IS YOUR STRING SESSION, COPY IT, DON'T SHARE!!** \n\n`{string_session}` \n\n**GENERATE BY @{bot.me.username}**"
     try:
         try:
             if telethon:
