@@ -91,8 +91,6 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
     api_id = API_ID
     api_hash = API_HASH
     #api_hash_msg = await msg.chat.ask("**Lu yakin mo buat string ? Deak Gua Ga Mao Tanggung Jawab ! Balas `Y` Untuk Setuju atau ketik /cancel Untuk Batal**", filters=filters.text)
-    if await cancelled(api_hash_msg):
-            return
     """
     if await cancelled(api_id):
         return
