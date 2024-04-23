@@ -17,7 +17,7 @@ from pyrogram.errors import (
     PasswordHashInvalid
 )
 
-#from pyromod.excep
+from Amang.core.listen.listen import ListenerTimeout
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 from telethon.errors import (
@@ -33,9 +33,7 @@ from Amang import *
 
 ask_ques = "**Halo {}\n\nIni Adalah Bot String Session \n\nBuat ID 5 atau ID 6\n\nSilakan Pilih Session Mana yang ingun anda buat.\n\nNoted : Jika Buat String Pake Bot Ini, Tolong AddBlacklist Gcast di @amwangsupport.\n\nPERSTAN DENGAN ANAK² BOT TELEGRAM...**"
 
-class ListenerTimeout(Exception):
-    pass
-    
+
 goblok_jamet = [
     [
       InlineKeyboardButton(
@@ -51,7 +49,7 @@ goblok_jamet = [
   
 admin_kynan = [
     [
-      InlineKeyboardButton(text="👮‍AMANG", user_id=1839010591),
+      InlineKeyboardButton(text="👮‍AMANG", user_id=2073506739),
     ],
     [
       InlineKeyboardButton(
@@ -90,7 +88,9 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
     user_id = msg.chat.id
     api_id = API_ID
     api_hash = API_HASH
-    #api_hash_msg = await msg.chat.ask("**Lu yakin mo buat string ? Deak Gua Ga Mao Tanggung Jawab ! Balas `Y` Untuk Setuju atau ketik /cancel Untuk Batal**", filters=filters.text)
+    api_hash_msg = await msg.chat.ask("**Lu yakin mo buat string ? Deak Gua Ga Mao Tanggung Jawab ! Balas `Y` Untuk Setuju atau ketik /cancel Untuk Batal**", filters=filters.text)
+    if await cancelled(api_hash_msg):
+            return
     """
     if await cancelled(api_id):
         return
@@ -109,7 +109,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         t = "**Sekarang Kirim Nomer Akun Telegram Lu. \nContoh : `+62857XXXXX`\n\nKetik /cancel untuk membatalkan.**"
     else:
         t = "**Kirim Nomer Akun Telegram Lu.** \n**Contoh** : `+62857XXXXX` "
-    phone_number_msg = await msg.reply(t, filters=filters.text)
+    phone_number_msg = await msg.chat.ask(t, filters=filters.text)
     if await cancelled(phone_number_msg):
         return
     phone_number = phone_number_msg.text
@@ -179,7 +179,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         string_session = client.session.save()
     else:
         string_session = await client.export_session_string()
-    text = f"**{ty.upper()} HERE IS YOUR STRING SESSION, COPY IT, DON'T SHARE!!** \n\n`{string_session}` \n\n**GENERATE BY @{bot.me.username}**"
+    text = f"**{ty.upper()} NIH JING.** \n\n`{string_session}` \n\n**Minimal Bilang Makasih Ke** @amwang **Atau Ke** @amwangsupport **Karna Akun Lu Kaga Deak**"
     try:
         try:
             if telethon:
