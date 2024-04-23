@@ -109,7 +109,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         t = "**Sekarang Kirim Nomer Akun Telegram Lu. \nContoh : `+62857XXXXX`\n\nKetik /cancel untuk membatalkan.**"
     else:
         t = "**Kirim Nomer Akun Telegram Lu.** \n**Contoh** : `+62857XXXXX` "
-    phone_number_msg = await bot.ask(t, filters=filters.text)
+    phone_number_msg = await msg.reply(t, filters=filters.text)
     if await cancelled(phone_number_msg):
         return
     phone_number = phone_number_msg.text
