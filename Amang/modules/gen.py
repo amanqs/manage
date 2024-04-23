@@ -17,7 +17,7 @@ from pyrogram.errors import (
     PasswordHashInvalid
 )
 
-from Amang.core.listen.listen import ListenerTimeout
+#from Amang.core.listen.listen import ListenerTimeout
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 from telethon.errors import (
